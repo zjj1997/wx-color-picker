@@ -1,0 +1,23 @@
+<view class="class">
+	<view class="area area-class" style="position: relative;background: hsl({{H}}deg {{100}}% {{50}}%);">
+		<view class="area-mask area-mask-1"></view>
+		<view class="area-mask area-mask-2"></view>
+		<moveable class="area-moveable" bind:change="handleAreaChange">
+			<view class="area-indicator-wrapper">
+				<view class="area-indicator-class"></view>
+			</view>
+		</moveable>
+	</view>
+	<view class="bar bar-class" style="position: relative;">
+		<moveable
+			class="bar-moveable"
+			direction="{{['Y']}}"
+			movearea-class="bar-movearea"
+			bind:change="handleBarChange"
+		>
+			<view class="bar-indicator-wrapper">
+				<view class="bar-indicator-class"></view>
+			</view>
+		</moveable>
+	</view>
+</view>

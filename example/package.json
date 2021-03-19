@@ -1,0 +1,9 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "example",
+  "main": "app.js",
+  "dependencies": {
+    "wx-color-picker": "^1.0.0"
+  }
+}

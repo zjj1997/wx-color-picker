@@ -1,0 +1,11 @@
+<view class="page" style="background: {{hex}};">
+	<color-picker
+		class="color-picker"
+		area-class="color-picker-area"
+		bar-class="color-picker-bar"
+		area-indicator-class="color-picker-area-indicator"
+		bar-indicator-class="color-picker-bar-indicator"
+		bind:change="handleColorChange"
+	/>
+	<view class="txt">rgb: ({{rgb.r}}, {{rgb.g}}, {{rgb.b}}); hex: {{hex}}</view>
+</view>

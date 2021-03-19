@@ -1,0 +1,44 @@
+.area-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.area-mask-1 {
+  background: linear-gradient(90deg, #fff, transparent);
+}
+
+.area-mask-2 {
+  background: linear-gradient(0deg, #000, transparent)
+}
+
+.area-moveable {
+  width: 100%;
+  height: 100%;
+}
+
+.area-indicator-wrapper {
+  width: 0;
+  height: 0;
+  position: relative;
+}
+
+.bar-moveable {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #f00 0, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+}
+
+.bar-movearea {
+  width: 100%;
+}
+
+.bar-indicator-wrapper {
+  width: 100%;
+  height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "color-picker": "wx-color-picker"
+  },
+  "navigationStyle": "custom"
+}

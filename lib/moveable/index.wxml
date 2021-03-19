@@ -1,0 +1,65 @@
+<wxs module="wxs">
+	module.exports.touchMove = function(event, ownerInstance) {
+		var dataset = event.instance.getDataset();
+		var touch = event.touches[0];
+		var moveableSize = dataset.moveableSize;
+		var direction = dataset.direction;
+		var boundingRect = dataset.boundingRect;
+		var newStyle = {};
+		var left = touch.clientX - boundingRect.left;
+		var top = touch.clientY - boundingRect.top;
+		if (~direction.indexOf("X")) {
+			if (left < 0) {
+				left = 0;
+			} else if (left <= boundingRect.width - moveableSize.width) {
+				left = left;
+			} else {
+				left = boundingRect.width - moveableSize.width;
+			}
+			newStyle.left = left + "px";
+		}
+		if (~direction.indexOf("Y")) {
+			if (top < 0) {
+				top = 0;
+			} else if (top <= boundingRect.height - moveableSize.height) {
+				top = top;
+			} else {
+				top = boundingRect.height - moveableSize.height;
+			}
+			newStyle.top = top + "px";
+		}
+		var moveableInstance = ownerInstance.selectComponent(".moveable");
+		var style = moveableInstance.getComputedStyle(["top","left"]);
+		if(style.top == newStyle.top && style.left == newStyle.left) {
+			return false;
+		}
+		moveableInstance.setStyle(newStyle);
+		ownerInstance.triggerEvent("change", {
+			x: left || 0,
+			y: top || 0,
+		});
+		return false;
+	}
+	module.exports.setPosition = function(newValue, oldValue, ownerInstance, instance) {
+		ownerInstance.selectComponent(".moveable").setStyle({
+			"left": newValue.x + "px",
+			"top": newValue.y + "px",
+		});
+		return false;
+	}
+</wxs>
+<view
+	class="wrapper class"
+	style="position: relative;"
+	position="{{position}}"
+	data-moveable-size="{{moveableSize}}"
+	data-direction="{{direction}}"
+	data-bounding-rect="{{boundingRect}}"
+	change:position="{{wxs.setPosition}}"
+	bindtouchstart="touchStart"
+	bindtouchmove="{{wxs.touchMove}}"
+>
+	<view class="moveable moveable-class" style="position: absolute;">
+		<slot></slot>
+	</view>
+</view>
